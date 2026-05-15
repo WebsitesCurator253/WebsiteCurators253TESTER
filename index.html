@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebsiteCurators253 | Build. Curate. Optimize.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #111314;
+    --bg2:        #1a1c1f;
+    --bg3:        #212428;
+    --border:     rgba(255,255,255,0.08);
+    --border2:    rgba(255,255,255,0.14);
+    --teal:       #2abfb0;
+    --teal-dark:  #1a9e91;
+    --orange:     #f47b20;
+    --orange-lt:  #ff9a45;
+    --text:       #e8eaed;
+    --text-muted: #8a939f;
+    --radius:     12px;
+    --radius-lg:  20px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    /* FIX: Forces all numbers to be the same height/alignment */
+    font-variant-numeric: lining-nums; 
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(17,19,20,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    color: var(--text); text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+  .logo-mark { width: 36px; height: 36px; flex-shrink: 0; }
+
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.88rem; font-weight: 500; color: var(--text-muted);
+    text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--orange) !important; color: white !important;
+    padding: 0.6rem 1.5rem; border-radius: 50px;
+    font-weight: 600 !important;
+  }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 8rem 4rem 5rem;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 4rem;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    position: relative; z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero-sub { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 2.5rem; }
+
+  /* ── FIXING THE BADGES ── */
+  .browser-mockup {
+    width: 100%; max-width: 460px;
+    background: var(--bg2); border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+
+  .metric-badge {
+    position:absolute; bottom: -10px; left: -20px;
+    background:var(--bg2); border:1px solid var(--border2); border-radius:var(--radius);
+    padding:1rem 1.2rem; box-shadow:0 16px 40px rgba(0,0,0,0.4);
+    display:flex; flex-direction: column; align-items:flex-start; gap:4px;
+    z-index: 10;
+  }
+
+  .metric-badge-2 {
+    position:absolute; top: 20px; right: -20px;
+    background:var(--bg3); border:1px solid var(--border2); border-radius:var(--radius);
+    padding:0.8rem 1.2rem; box-shadow:0 12px 40px rgba(0,0,0,0.4);
+    z-index: 10;
+    text-align: center;
+  }
+
+  /* Fixed alignment for numbers inside badges */
+  .metric-num { 
+    font-family:'Syne', sans-serif; 
+    font-weight:800; 
+    font-size:1.5rem; 
+    line-height: 1; 
+    color:var(--teal); 
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .metric-badge-2 .metric-num { color: var(--orange); }
+  .metric-lbl { font-size:0.75rem; color:var(--text-muted); line-height:1.2; font-weight: 500; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    padding:3rem 4rem;
+  }
+  .stats-inner {
+    max-width:1200px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:2rem;
+  }
+  .stat-num { 
+    font-family:'Syne',sans-serif; 
+    font-weight:800; 
+    font-size:2.4rem; 
+    color:var(--orange); 
+    line-height: 1;
+  }
+
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">
+    <svg class="logo-mark" viewBox="0 0 36 36" fill="none">
+      <rect x="2" y="7" width="24" height="18" rx="3" fill="#f47b20" opacity="0.85"/>
+      <rect x="2" y="7" width="24" height="5" rx="3" fill="#1a3050"/>
+      <path d="M6 19 Q14 10 30 4" stroke="#2abfb0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M25 2 L32 2 L32 9" stroke="#2abfb0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    WEBSITE<span>CURATORS</span><span style="color:rgba(255,255,255,0.3);font-weight:400;font-size:0.85rem;margin-left:4px;">253</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why a Website</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="hero-grid">
+    <div class="hero">
+      <h1>Your Business Deserves a <em>Website That Works</em></h1>
+      <p class="hero-sub">We build fast, professional websites for Tacoma small businesses — built to impress clients, generate leads, and grow with you.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a Free Quote &rarr;</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="browser-mockup">
+        <div style="height: 250px; background: #1a1c1f; padding: 20px;">
+             <div style="width: 60%; height: 10px; background: var(--orange); margin-bottom: 10px;"></div>
+             <div style="width: 40%; height: 10px; background: var(--bg3);"></div>
+        </div>
+      </div>
+      
+      <div class="metric-badge">
+          <span class="metric-num">+312%</span>
+          <span class="metric-lbl">Traffic Increase</span>
+      </div>
+
+      <div class="metric-badge-2">
+        <span class="metric-num">253</span>
+        <span class="metric-lbl">Tacoma Local</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Local Tacoma</span></div>
+    <div class="stat-item"><span class="stat-num">253</span><span class="stat-label">Area Focused</span></div>
+    <div class="stat-item"><span class="stat-num">Free</span><span class="stat-label">Consultation</span></div>
+    <div class="stat-item"><span class="stat-num">SEO</span><span class="stat-label">Built-in</span></div>
+  </div>
+</div>
+
+</body>
+</html>
